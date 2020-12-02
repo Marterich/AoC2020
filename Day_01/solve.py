@@ -5,16 +5,16 @@ Enable <1> or Disable <0> debugging. Debugging includes a timer for the runtime 
 and assertions to test if the examples work result in the correct values
 """
 
-debug = 0
+debug = 1
 
 if debug:
 	import time
 	start = time.perf_counter()
 
-#Read input Files into a list
-with open("example_input.txt", "r") as f:
-	example_input = [int(x.strip()) for x in f]
-with open("puzzle_input.txt", "r") as f:
+	
+	with open("example_input.txt", "r") as f:						#Read input Files into a list
+		example_input = [int(x.strip()) for x in f]
+with open("puzzle_input.txt", "r") as f:							#Read input Files into a list
 	puzzle_input = [int(x.strip()) for x in f]
 
 
