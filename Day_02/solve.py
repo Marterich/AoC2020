@@ -24,17 +24,16 @@ def part1(inp):
 	correct_passwords = 0
 	for x in inp:
 		#Seperate the different parts of every line using RegEx
-		p1 = int(re.search(r'^\w+',x)[0].strip())
-		p2 = int(re.search(r'-(\w+)',x)[1].strip())
-		char = re.search(r'(\w):',x)[1].strip()
-		password = re.search(r'\w*$',x)[0].strip()
+		pattern = re.search(r"^([0-9])+-([0-9]+) ([a-z]): ([a-z]+)$",x)
+		
+		p1 = int(pattern.group(1))
+		p2 = int(pattern.group(2))
+		char = pattern.group(3)
+		password = pattern.group(4)
 		
 		#count how ofthen a given char apperas in the password and return the value
-		char_counter = 0
-		for y in range(len(password)):
-			if password[y] == char:
-				char_counter += 1
-		if p1 <= char_counter <= p2:
+		
+		if p1 <= password.count(char) <= p2:
 			correct_passwords += 1
 	return correct_passwords
 
@@ -42,10 +41,12 @@ def part2(inp):
 	correct_passwords = 0
 	for x in inp:
 		#Seperate the different parts of every line using RegEx
-		p1 = int(re.search(r'^\w+',x)[0].strip())
-		p2 = int(re.search(r'-(\w+)',x)[1].strip())
-		char = re.search(r'(\w):',x)[1].strip()
-		password = re.search(r'\w*$',x)[0].strip()
+		pattern = re.search(r"^([0-9])+-([0-9]+) ([a-z]): ([a-z]+)$",x)
+		
+		p1 = int(pattern.group(1))
+		p2 = int(pattern.group(2))
+		char = pattern.group(3)
+		password = pattern.group(4)
 		
 		#check if the given char only exists in one of the two locations. If yes, increment the counter, if no, do nothing
 		if password[p1-1] == char and not password[p2-1] == char or password[p2-1] == char and not password[p1-1] == char:
