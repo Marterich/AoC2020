@@ -24,7 +24,7 @@ def part1(inp):
 	correct_passwords = 0
 	for x in inp:
 		#Seperate the different parts of every line using RegEx
-		pattern = re.search(r"^([0-9])+-([0-9]+) ([a-z]): ([a-z]+)$",x)
+		pattern = re.search(r"^([0-9]+)-([0-9]+) ([a-z]): ([a-z]+)$",x)
 		
 		p1 = int(pattern.group(1))
 		p2 = int(pattern.group(2))
@@ -41,7 +41,7 @@ def part2(inp):
 	correct_passwords = 0
 	for x in inp:
 		#Seperate the different parts of every line using RegEx
-		pattern = re.search(r"^([0-9])+-([0-9]+) ([a-z]): ([a-z]+)$",x)
+		pattern = re.search(r"^([0-9]+)-([0-9]+) ([a-z]): ([a-z]+)$",x)
 		
 		p1 = int(pattern.group(1))
 		p2 = int(pattern.group(2))
