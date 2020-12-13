@@ -39,28 +39,13 @@ def part2(input):
 	heading = 0 #east = 0, south = 90, west = 180, north = 270
 	position = {"east": 0, "north":0}
 	waypoint = {"east": 10, "north":1}
-	for line in input:
-		if line[0] == "L":	# if the first letter is L or R, spin the waypoint counterclockwise/clockwise around the ship
-			if int(line[1:]) == 90:
-				temp1 = waypoint["east"]
-				waypoint["east"] = -waypoint["north"]
-				waypoint["north"] = temp1
-			if int(line[1:]) == 270:
-				temp1 = waypoint["east"]
-				waypoint["east"] = waypoint["north"]
-				waypoint["north"] =-temp1					
-		elif line[0] == "R":
-			if int(line[1:]) == 90:
-				temp1 = waypoint["east"]
-				waypoint["east"] = waypoint["north"]
-				waypoint["north"] = -temp1
-			if int(line[1:]) == 270:
-				temp1 = waypoint["east"]
-				waypoint["east"] = -waypoint["north"]
-				waypoint["north"] = temp1
-		if int(line[1:]) == 180: 
-			waypoint["east"] = -waypoint["east"]
-			waypoint["north"] = -waypoint["north"]
+	for line in input:	
+		if line == "L90" or line =="R270": # spin the waypoint around the ship
+			waypoint["east"],  waypoint["north"] = -waypoint["north"], waypoint["east"]
+		elif line == "L270" or line == "R90":
+			waypoint["east"],  waypoint["north"] = waypoint["north"], -waypoint["east"]					
+		elif line == "L180" or line == "R180": 
+			waypoint["east"],  waypoint["north"]= -waypoint["east"], -waypoint["north"]
 		elif line[0] == "F":	# if the first letter is F, move the ship the given times in the direction of the waypoint having the heading in mind
 			for _ in range(int(line[1:])):
 				if heading == 0:
