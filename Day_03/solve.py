@@ -31,10 +31,10 @@ def part1(right, down, area):
 		if area[line][relative_row] is ".":
 			None
 			if show_visual:
-				visual[line] = visual[line][:relative_row]+"O"+visual[line][relative_row:]
+				visual[line] = visual[line][:relative_row]+"O"+visual[line][relative_row+1:]
 		elif area[line][relative_row] is "#":
 			if show_visual:
-				visual[line] = visual[line][:relative_row]+"X"+visual[line][relative_row:]
+				visual[line] = visual[line][:relative_row]+"X"+visual[line][relative_row+1:]
 			trees += 1
 		line += down
 		row += right
